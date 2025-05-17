@@ -1,7 +1,9 @@
 package com.example.personalfinancetracker.controller;
 
+
 import com.example.personalfinancetracker.model.Expense;
 import com.example.personalfinancetracker.service.ExpenseService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,5 +26,12 @@ public class ExpenseController {
     @PostMapping
     public Expense create(@RequestBody Expense expense) {
         return service.create(expense);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        boolean deleted = service.delete(id);
+        return deleted ? ResponseEntity.noContent().build()
+                : ResponseEntity.notFound().build();
     }
 }
