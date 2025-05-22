@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:3000") // ✅ This is what you add
 @RestController
 @RequestMapping("/api/expenses")
 public class ExpenseController {
